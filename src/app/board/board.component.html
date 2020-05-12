@@ -1,0 +1,39 @@
+<div class="header">
+  <h1>Tic-Tac-Toe</h1>
+</div>
+<div class="container-fluid">
+  <div>
+    <app-square
+      *ngFor="let square of squares | slice: 0:3; let i = index"
+      [value]="square"
+      (playerClick)="clickHandler(i)"
+    ></app-square>
+  </div>
+  <div>
+    <app-square
+      *ngFor="let square of squares | slice: 3:6; let i = index"
+      [value]="square"
+      (playerClick)="clickHandler(i + 3)"
+    >
+    </app-square>
+  </div>
+
+  <div>
+    <app-square
+      *ngFor="let square of squares | slice: 6; let i = index"
+      [value]="square"
+      (playerClick)="clickHandler(i + 6)"
+    >
+    </app-square>
+  </div>
+</div>
+<br />
+<hr />
+<div class="msg">
+  <div *ngIf="(winner !== 'Tie' && winner === 'X') || winner === 'O'">
+    <h3>Winner is {{ winner }}</h3>
+  </div>
+  <div *ngIf="winner === 'Tie'">
+    <h3>It is a Tie</h3>
+  </div>
+</div>
